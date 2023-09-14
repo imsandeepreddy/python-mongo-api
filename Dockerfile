@@ -8,6 +8,8 @@ RUN apk update && apk add --no-cache python3 py3-pip
 
 RUN pip3 install --upgrade pip
 
+LABEL org.opencontainers.image.source=https://github.com/imsandeepreddy/python-mongo-api
+
 # # Step 3 Configure a software
 # # Defining working directory
 WORKDIR /app
