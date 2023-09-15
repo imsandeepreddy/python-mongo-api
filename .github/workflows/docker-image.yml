@@ -20,3 +20,12 @@ jobs:
       run: echo "${{ secrets.TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
     - name: Push the Docker image to GitHub Container Registry
       run: docker push ghcr.io/imsandeepreddy/python-mongo-api:latest
+  cow:
+    name: Cowsays
+    runs-on: ubuntu-latest
+    steps:
+    - name: Ship it
+      uses: mscoutermarsh/cowsays-action@master
+      with:
+        text: 'Build succeeded.. Congratulations!!!'
+        color: 'green'
