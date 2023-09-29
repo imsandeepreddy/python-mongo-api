@@ -1,6 +1,8 @@
+# import pyyaml module
 import yaml
+from yaml.loader import SafeLoader
 
-with open('config.yml', 'r') as file
-  prime_service = yaml.safe_load(file)
-
-print prime_service
+# Open the file and load the file
+with open('config.yaml') as f:
+    data = yaml.load(f, Loader=SafeLoader)
+    print(data)
