@@ -1,33 +1,10 @@
-# Step 1 select default OS image
-FROM alpine
+FROM python:3
 
+WORKDIR /usr/src/app
 
-# # Step 2 tell what you want to do
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
-RUN apk update && apk add --no-cache python3 py3-pip
+COPY . .
 
-RUN pip3 install --upgrade pip
-
-LABEL org.opencontainers.image.source=https://github.com/imsandeepreddy/python-mongo-api
-
-# # Step 3 Configure a software
-# # Defining working directory
-WORKDIR /app
-
-# # Copy everything which is present in my docker directory to working (/app)
-COPY /requirements.txt /app
-
-RUN pip3 install -r requirements.txt
-
-COPY ["MongoDB API.py", "/app"]
-
-# Exposing an internal port
-EXPOSE 5001
-
-
-# Step 4 set default commands
-# These are permanent commands i.e even if user will provide come commands those will be considered as argunemts of this command
-ENTRYPOINT [ "python3" ]
-
-# These commands will be replaced if user provides any command by himself
-CMD ["MongoDB API.py"]
+CMD [ "python", "./yaml-read.py" ]
